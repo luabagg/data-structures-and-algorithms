@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "arraycommons.h"
 #include <stdbool.h>
+#include "arraycommons.h"
 
 int swap(int *prev, int *next) {
 	int temp = *prev;
