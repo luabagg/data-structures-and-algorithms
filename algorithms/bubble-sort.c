@@ -22,7 +22,7 @@ int sort(int array[], int array_size) {
 			totalIt++;
 		}
 		if (swapped == false) {
-            break;
+			break;
 		}
 	}
 
