@@ -4,6 +4,8 @@
 #include <stdio.h>
  
 // main function
-void main() {
+int main() {
 	printf("Hello World");
+
+	return 0;
 }
