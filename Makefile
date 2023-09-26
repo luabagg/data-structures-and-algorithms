@@ -1,9 +1,13 @@
+# C options
 CC = gcc
 CFLAGS = -g
 OUTPUT_DIR=out
 RM = rm -f
-BIN=hello-world
-INLCUDE_FILES=algorithms/arraycommons.c
+BIN=helloworld
+INLCUDE_FILES=commons/arraycommons.c
+
+# Python options
+MODULE=helloworld
 
 default: all
 
@@ -11,13 +15,16 @@ default: all
 run:
 	./$(OUTPUT_DIR)/$(BIN)
 
-all: hello-world bubble-sort
+runpy:
+	python3 -m $(MODULE)
 
-hello-world:
-	$(CC) $(CFLAGS) -o $(OUTPUT_DIR)/hello-world hello-world.c
+all: helloworld bubblesort
 
-bubble-sort:
-	$(CC) $(CFLAGS) -o $(OUTPUT_DIR)/bubble-sort algorithms/bubble-sort.c $(INLCUDE_FILES)
+helloworld:
+	$(CC) $(CFLAGS) -o $(OUTPUT_DIR)/helloworld helloworld.c
+
+bubblesort:
+	$(CC) $(CFLAGS) -o $(OUTPUT_DIR)/bubblesort sorting/bubblesort/bubblesort.c $(INLCUDE_FILES)
 
 clean:
 	$(RM) $(OUTPUT_DIR)/*

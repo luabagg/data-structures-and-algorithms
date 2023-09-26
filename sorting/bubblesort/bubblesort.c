@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "arraycommons.h"
+#include "../../commons/arraycommons.h"
 
 int swap(int *prev, int *next) {
 	int temp = *prev;
@@ -9,11 +9,10 @@ int swap(int *prev, int *next) {
 }
 
 int sort(int array[], int array_size) {
-	bool swapped;
+	bool swapped = false;
 	int totalIt = 0;
 	int real_array_size = array_size - 1;
 	for (int i = 0; i < real_array_size; i++) {
-		swapped = false;
 		for (int j = 0; j < real_array_size - i; j++) {
 			if (array[j] > array[j + 1]) {
 				swap(&array[j], &array[j + 1]);
@@ -32,7 +31,7 @@ int sort(int array[], int array_size) {
 int main() {
 	int array_size;
 
-	printf("Enter the size of array::");
+	printf("Enter the size of array:");
 	scanf("%d", &array_size);
 
 	int array[array_size];
@@ -42,7 +41,7 @@ int main() {
 	printf("Before sorting: \n");
 	printArray(array, array_size);
 
-	int res = sort(array, array_size);
+	sort(array, array_size);
 	printf("Sorted array is: \n");
 	printArray(array, array_size);
 }
