@@ -48,8 +48,9 @@ Then, execute the python module:
 make MODULE=helloworld runpy
 ```
 
-You can use any available module as "folder.subfolder.filename" - "sorting.bubblesort.bubblesort"
+You can use any available module as "folder.subfolder.filename" - e.g "sorting.bubblesort.bubblesort"
 
 ## Contributing
+
 This project is an open-source project, and contributions from other developers are welcome. If you encounter any issues or have suggestions for improvement, please submit them on the project's GitHub page.
 Any new implementation is welcome, and you can choose your preferred language.

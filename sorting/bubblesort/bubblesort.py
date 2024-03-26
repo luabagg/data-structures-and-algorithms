@@ -1,20 +1,20 @@
 from commons import arraycommons
 
-def bubbleSort(arr):
+def sort(arr):
     swapped = False
-    totalIt = 0
+    total_it = 0
     real_array_size = len(arr) - 1
     for i in range(real_array_size):
         for j in range(0, real_array_size-i):
             if arr[j] > arr[j + 1]:
                 swapped = True
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
-        totalIt += 1
+        total_it += 1
 
         if not swapped:
             break
 
-    print("Loop ran for %d iterations \n" % totalIt)
+    print(f"Loop ran for {total_it} iterations \n")
     return arr
 
 array_size = int(input("Enter the size of array:"))
@@ -23,7 +23,7 @@ array = arraycommons.populateArray(array_size)
 print("Before sorting:")
 arraycommons.printArray(array)
 
-array = bubbleSort(array)
+array = sort(array)
 
 print("Sorted array is:")
 arraycommons.printArray(array)
