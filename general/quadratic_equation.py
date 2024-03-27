@@ -29,8 +29,8 @@ def get_formula_coefficients() -> FormulaCoefficients:
 class QuadraticFormula():
     fc: FormulaCoefficients
     discriminant: int
-    first_root: int|None = None
-    second_root: int|None = None
+    first_root: float|None = None
+    second_root: float|None = None
 
     def __init__(self, fc: FormulaCoefficients) -> None:
         self.fc = fc
@@ -50,13 +50,13 @@ class QuadraticFormula():
         elif self.discriminant == 0:
             self.first_root, self.second_root = self.positive_formula()
 
-    def get_discriminant(self) -> int:
+    def get_discriminant(self) -> float:
         return math.pow(self.fc.b, 2) - (4 * self.fc.a * self.fc.c)
 
-    def positive_formula(self) -> int:
+    def positive_formula(self) -> float:
         return (-self.fc.b + math.sqrt(self.discriminant)) / 2 * self.fc.a
 
-    def negative_formula(self) -> int:
+    def negative_formula(self) -> float:
         return (-self.fc.b - math.sqrt(self.discriminant)) / 2 * self.fc.a
 
 QuadraticFormula(
