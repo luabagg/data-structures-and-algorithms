@@ -47,7 +47,7 @@ class QuadraticFormula():
         if self.discriminant > 0:
             self.first_root = self.positive_formula()
             self.second_root = self.negative_formula()
-        elif self.discriminant  == 0:
+        elif self.discriminant == 0:
             self.first_root, self.second_root = self.positive_formula()
 
     def get_discriminant(self) -> int:
