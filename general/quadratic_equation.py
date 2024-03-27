@@ -19,7 +19,7 @@ def get_formula_coefficients() -> FormulaCoefficients:
     for c in fc:
         coefficient = c[0]
         try:
-            coefficient_value = int(input("Please write the coefficient {coefficient}: "))
+            coefficient_value = int(input(f"Please write the coefficient {coefficient}: "))
         except ValueError:
             print("Invalid number")
             exit()
