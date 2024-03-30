@@ -1,4 +1,5 @@
 import math
+import cmath
 import dataclasses
 from typing import Iterable, Tuple
 
@@ -23,14 +24,19 @@ def get_formula_coefficients() -> FormulaCoefficients:
         except ValueError:
             print("Invalid number")
             exit()
+
+        if coefficient == "a" and coefficient_value == 0:
+            print("Coefficient a can't be 0")
+            exit()
+
         setattr(fc, coefficient, coefficient_value)
     return fc
 
 class QuadraticFormula():
     fc: FormulaCoefficients
     discriminant: int
-    first_root: float|None = None
-    second_root: float|None = None
+    first_root: float|complex
+    second_root: float|complex
 
     def __init__(self, fc: FormulaCoefficients) -> None:
         self.fc = fc
@@ -44,20 +50,23 @@ class QuadraticFormula():
         print("Second Root:", self.second_root)
 
     def calculate(self):
-        if self.discriminant > 0:
-            self.first_root = self.positive_formula()
-            self.second_root = self.negative_formula()
-        elif self.discriminant == 0:
-            self.first_root, self.second_root = self.positive_formula()
+        self.first_root = self.formula()
+        self.second_root = self.formula(positive=False)
 
     def get_discriminant(self) -> float:
         return math.pow(self.fc.b, 2) - (4 * self.fc.a * self.fc.c)
 
-    def positive_formula(self) -> float:
-        return (-self.fc.b + math.sqrt(self.discriminant)) / 2 * self.fc.a
+    def square_root(self) -> float|complex:
+        if self.discriminant >= 0:
+            return math.sqrt(self.discriminant)
+        return cmath.sqrt(self.discriminant)        
 
-    def negative_formula(self) -> float:
-        return (-self.fc.b - math.sqrt(self.discriminant)) / 2 * self.fc.a
+    def formula(self, positive: bool = True) -> float:
+        m = 1
+        if positive is False:
+            m = -1
+
+        return (-self.fc.b + m * self.square_root()) / (2 * self.fc.a)
 
 QuadraticFormula(
     get_formula_coefficients()
