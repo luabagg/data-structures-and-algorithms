@@ -59,7 +59,7 @@ class QuadraticFormula():
     def square_root(self) -> float|complex:
         if self.discriminant >= 0:
             return math.sqrt(self.discriminant)
-        return cmath.sqrt(self.discriminant)        
+        return cmath.sqrt(self.discriminant)
 
     def formula(self, positive: bool = True) -> float:
         m = 1
