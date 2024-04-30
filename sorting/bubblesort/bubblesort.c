@@ -10,7 +10,7 @@ int swap(int *prev, int *next) {
 
 int sort(int array[], int array_size) {
 	bool swapped = false;
-	int totalIt = 0;
+	int total_it = 0;
 	int real_array_size = array_size - 1;
 	for (int i = 0; i < real_array_size; i++) {
 		for (int j = 0; j < real_array_size - i; j++) {
@@ -18,14 +18,14 @@ int sort(int array[], int array_size) {
 				swap(&array[j], &array[j + 1]);
 				swapped = true;
 			}
-			totalIt++;
+			total_it++;
 		}
 		if (swapped == false) {
 			break;
 		}
 	}
 
-	printf("Loop ran for %d iterations \n\n", totalIt);
+	printf("Loop ran for %d iterations \n\n", total_it);
 }
 
 int main() {
