@@ -9,8 +9,7 @@ def sort(arr):
             if arr[j] > arr[j + 1]:
                 swapped = True
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
-        total_it += 1
-
+            total_it += 1
         if not swapped:
             break
 
