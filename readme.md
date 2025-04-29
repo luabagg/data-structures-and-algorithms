@@ -42,6 +42,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+> After updating requirements, you can run `pip freeze > requirements.txt`
+
 Then, execute the python module:
 
 ```sh
