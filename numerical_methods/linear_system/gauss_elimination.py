@@ -1,4 +1,7 @@
 def print_matrix(a, b):
+    """
+    Print the augmented matrix [A|b] in a readable format.
+    """
     n = len(b)
     for i in range(n):
         row = "  ".join(f"{a[i][j]:8.4f}" for j in range(n))
@@ -6,6 +9,17 @@ def print_matrix(a, b):
     print()
 
 def gauss_elimination_verbose(a, b):
+    """
+    Solve the linear system Ax = b using Gaussian elimination with partial pivoting.
+    Prints each step of the elimination and back substitution process.
+
+    Parameters:
+    a -- Coefficient matrix (list of lists, will be modified in-place)
+    b -- Right-hand side vector (list, will be modified in-place)
+
+    Returns:
+    x -- Solution vector (list)
+    """
     n = len(b)
 
     print("Initial augmented matrix:")
@@ -13,6 +27,7 @@ def gauss_elimination_verbose(a, b):
 
     # Forward elimination
     for i in range(n):
+        # Partial pivoting: find the row with the largest value in column i
         max_row = i + max(range(n - i), key=lambda k: abs(a[i + k][i]))
         if abs(a[max_row][i]) < 1e-12:
             raise ValueError("Matrix is singular or nearly singular")
@@ -41,16 +56,17 @@ def gauss_elimination_verbose(a, b):
         x[i] = (b[i] - s) / a[i][i]
         print(f"x[{i}] = {x[i]:.4f}")
 
+    print("\nFinal solution:", x)
     return x
 
-A = [
-    [1, 2, 1, 1, 2],
-    [0, 1, 2, 2, 3],
-    [1, 0, 2, 3, 2],
-    [1, 1, 1, 2, 1],
-    [2, 1, 0, 1, 1]
-]
-B = [31, 31, 27, 23, 22]
+if __name__ == "__main__":
+    A = [
+        [1, 2, 1, 1, 2],
+        [0, 1, 2, 2, 3],
+        [1, 0, 2, 3, 2],
+        [1, 1, 1, 2, 1],
+        [2, 1, 0, 1, 1]
+    ]
+    B = [31, 31, 27, 23, 22]
 
-solution = gauss_elimination_verbose([row[:] for row in A], B[:])
-print("Final solution:", solution)
+    solution = gauss_elimination_verbose([row[:] for row in A], B[:])
