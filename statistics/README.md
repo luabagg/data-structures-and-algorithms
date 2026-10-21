@@ -16,6 +16,17 @@ nonparametric-statistics/
   mcnemar_test.r
   sign_test.r
   wilcoxon_signed_rank_test.r
+experimental-statistics/
+  completely_randomized_design.r
+  randomized_block_design.r
+  latin_square_design.r
+  tukey_test.r
+  duncan_test.r
+  student_newman_keuls_test.r
+  dunnett_test.r
+  t_test_contrasts.r
+  scheffe_test.r
+  regression_in_anova.r
 ```
 
 Topic folders group related tests. One script file per procedure.
@@ -48,6 +59,43 @@ Two related samples:
 | Paired numeric outcome, direction only | `nonparametric-statistics/sign_test.r` |
 | Paired numeric outcome, direction and size | `nonparametric-statistics/wilcoxon_signed_rank_test.r` |
 
+## Experimental statistics
+
+Each script works through examples. A comment above each example gives
+its context. Each script checks its results against table values, hand
+calculations or a built-in R function.
+
+ANOVA designs:
+
+| Design | Script | Examples |
+|---|---|---|
+| DIC, no blocks | `experimental-statistics/completely_randomized_design.r` | Car brands, time from 0 to 100 km/h |
+| DBC, one blocking criterion | `experimental-statistics/randomized_block_design.r` | Two diets, age groups as blocks |
+| DQL, rows and columns | `experimental-statistics/latin_square_design.r` | Sugarcane varieties, yogurt bacilli, tire brands |
+
+Comparisons after the ANOVA:
+
+| Goal | Script | Examples |
+|---|---|---|
+| All pairs, one critical value | `experimental-statistics/tukey_test.r` | Tomato, car brands, insecticides, potato, Tukey vs t |
+| All pairs, critical value grows with the range | `experimental-statistics/duncan_test.r` | Car brands |
+| All pairs, between Tukey and Duncan | `experimental-statistics/student_newman_keuls_test.r` | Car brands, all three tests side by side |
+| Each treatment against a control | `experimental-statistics/dunnett_test.r` | Insecticides vs control, potato vs control |
+| Contrasts, orthogonality (equal and unequal r), planned t test, DMS | `experimental-statistics/t_test_contrasts.r` | Pineapple intercropping, car brands by price |
+| Any contrast, also after you see the data | `experimental-statistics/scheffe_test.r` | Car brands by price, Scheffe vs t, Scheffe vs Dunnett |
+
+Quantitative treatments (doses):
+
+| Goal | Script | Examples |
+|---|---|---|
+| Linear, quadratic and lack-of-fit F tests | `experimental-statistics/regression_in_anova.r` | Nitrogen doses (illustrative values) |
+
+`dunnett_test.r` needs the `mvtnorm` package. Install it once:
+
+```sh
+Rscript -e 'install.packages("mvtnorm")'
+```
+
 ## Run
 
 From this directory:
@@ -63,4 +111,14 @@ Rscript nonparametric-statistics/mann_whitney_test.r
 Rscript nonparametric-statistics/mcnemar_test.r
 Rscript nonparametric-statistics/sign_test.r
 Rscript nonparametric-statistics/wilcoxon_signed_rank_test.r
+Rscript experimental-statistics/completely_randomized_design.r
+Rscript experimental-statistics/randomized_block_design.r
+Rscript experimental-statistics/latin_square_design.r
+Rscript experimental-statistics/tukey_test.r
+Rscript experimental-statistics/duncan_test.r
+Rscript experimental-statistics/student_newman_keuls_test.r
+Rscript experimental-statistics/dunnett_test.r
+Rscript experimental-statistics/t_test_contrasts.r
+Rscript experimental-statistics/scheffe_test.r
+Rscript experimental-statistics/regression_in_anova.r
 ```
