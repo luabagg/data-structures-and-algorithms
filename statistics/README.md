@@ -6,16 +6,19 @@ Personal learning repo for statistics practice code (mostly R).
 
 ```text
 nonparametric-statistics/
-  binomial_test.r
-  chi-squared_test.r
-  kolmogorov_smirnov_test.r
-  lilliefors_test.r
-  runs_test.r
-  fisher_exact_test.r
-  mann_whitney_test.r
-  mcnemar_test.r
-  sign_test.r
-  wilcoxon_signed_rank_test.r
+  one-sample/
+    binomial_test.r
+    chi-squared_test.r
+    kolmogorov_smirnov_test.r
+    lilliefors_test.r
+    runs_test.r
+  two-independent-samples/
+    fisher_exact_test.r
+    mann_whitney_test.r
+  two-related-samples/
+    mcnemar_test.r
+    sign_test.r
+    wilcoxon_signed_rank_test.r
 experimental-statistics/
   completely_randomized_design.r
   randomized_block_design.r
@@ -37,27 +40,27 @@ One sample:
 
 | Topic | Script |
 |---|---|
-| Binomial test | `nonparametric-statistics/binomial_test.r` |
-| Chi-squared test | `nonparametric-statistics/chi-squared_test.r` |
-| Kolmogorov-Smirnov | `nonparametric-statistics/kolmogorov_smirnov_test.r` |
-| Lilliefors | `nonparametric-statistics/lilliefors_test.r` |
-| Runs (iterações) | `nonparametric-statistics/runs_test.r` |
+| Binomial test | `nonparametric-statistics/one-sample/binomial_test.r` |
+| Chi-squared test | `nonparametric-statistics/one-sample/chi-squared_test.r` |
+| Kolmogorov-Smirnov | `nonparametric-statistics/one-sample/kolmogorov_smirnov_test.r` |
+| Lilliefors | `nonparametric-statistics/one-sample/lilliefors_test.r` |
+| Runs (iterações) | `nonparametric-statistics/one-sample/runs_test.r` |
 
-Two independent samples. Chi-squared independence is the independence section of `chi-squared_test.r`.
+Two independent samples. Chi-squared independence is the independence section of `one-sample/chi-squared_test.r`.
 
 | Situation | Script |
 |---|---|
-| Two categorical variables, expected counts at least 5 | `nonparametric-statistics/chi-squared_test.r` |
-| 2x2 table with small counts | `nonparametric-statistics/fisher_exact_test.r` |
-| Ordinal or numeric outcome | `nonparametric-statistics/mann_whitney_test.r` |
+| Two categorical variables, expected counts at least 5 | `nonparametric-statistics/one-sample/chi-squared_test.r` |
+| 2x2 table with small counts | `nonparametric-statistics/two-independent-samples/fisher_exact_test.r` |
+| Ordinal or numeric outcome | `nonparametric-statistics/two-independent-samples/mann_whitney_test.r` |
 
 Two related samples:
 
 | Situation | Script |
 |---|---|
-| Binary category before and after | `nonparametric-statistics/mcnemar_test.r` |
-| Paired numeric outcome, direction only | `nonparametric-statistics/sign_test.r` |
-| Paired numeric outcome, direction and size | `nonparametric-statistics/wilcoxon_signed_rank_test.r` |
+| Binary category before and after | `nonparametric-statistics/two-related-samples/mcnemar_test.r` |
+| Paired numeric outcome, direction only | `nonparametric-statistics/two-related-samples/sign_test.r` |
+| Paired numeric outcome, direction and size | `nonparametric-statistics/two-related-samples/wilcoxon_signed_rank_test.r` |
 
 ## Experimental statistics
 
@@ -101,16 +104,16 @@ Rscript -e 'install.packages("mvtnorm")'
 From this directory:
 
 ```sh
-Rscript nonparametric-statistics/binomial_test.r
-Rscript nonparametric-statistics/chi-squared_test.r
-Rscript nonparametric-statistics/kolmogorov_smirnov_test.r
-Rscript nonparametric-statistics/lilliefors_test.r
-Rscript nonparametric-statistics/runs_test.r
-Rscript nonparametric-statistics/fisher_exact_test.r
-Rscript nonparametric-statistics/mann_whitney_test.r
-Rscript nonparametric-statistics/mcnemar_test.r
-Rscript nonparametric-statistics/sign_test.r
-Rscript nonparametric-statistics/wilcoxon_signed_rank_test.r
+Rscript nonparametric-statistics/one-sample/binomial_test.r
+Rscript nonparametric-statistics/one-sample/chi-squared_test.r
+Rscript nonparametric-statistics/one-sample/kolmogorov_smirnov_test.r
+Rscript nonparametric-statistics/one-sample/lilliefors_test.r
+Rscript nonparametric-statistics/one-sample/runs_test.r
+Rscript nonparametric-statistics/two-independent-samples/fisher_exact_test.r
+Rscript nonparametric-statistics/two-independent-samples/mann_whitney_test.r
+Rscript nonparametric-statistics/two-related-samples/mcnemar_test.r
+Rscript nonparametric-statistics/two-related-samples/sign_test.r
+Rscript nonparametric-statistics/two-related-samples/wilcoxon_signed_rank_test.r
 Rscript experimental-statistics/completely_randomized_design.r
 Rscript experimental-statistics/randomized_block_design.r
 Rscript experimental-statistics/latin_square_design.r
