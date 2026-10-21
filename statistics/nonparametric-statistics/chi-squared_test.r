@@ -80,3 +80,38 @@ print(ind$expected)
 ind_yates <- chisq.test(table_tx, correct = TRUE)
 cat("\nWith Yates continuity correction:\n")
 print(ind_yates)
+
+# --- study guide: group x preference ---
+# Guia de estudo, amostras independentes. All Fe are above 5, so the
+# chi-squared approximation is the test the guide asks for.
+# A 2x2 table with small counts belongs in fisher_exact_test.r instead.
+
+table_pref <- matrix(
+  c(30, 20,
+    15, 35),
+  nrow = 2,
+  byrow = TRUE,
+  dimnames = list(
+    group = c("G1", "G2"),
+    preference = c("A", "B")
+  )
+)
+
+cat("\nIndependence (study guide: group x preference)\n")
+print(table_pref)
+
+row_pref <- rowSums(table_pref)
+col_pref <- colSums(table_pref)
+n_pref <- sum(table_pref)
+expected_pref <- outer(row_pref, col_pref) / n_pref
+x2_pref <- sum((table_pref - expected_pref)^2 / expected_pref)
+df_pref <- (nrow(table_pref) - 1) * (ncol(table_pref) - 1)
+p_pref <- pchisq(x2_pref, df = df_pref, lower.tail = FALSE)
+chi_tab <- qchisq(1 - alpha, df = df_pref)
+
+cat("Expected:\n")
+print(expected_pref)
+cat("X^2 manual =", x2_pref, " df =", df_pref, "\n")
+cat("chi^2 table (alpha =", alpha, ") =", chi_tab, "\n")
+cat("reject H0 because X^2 > table?", x2_pref > chi_tab, "\n")
+cat("p-value manual =", p_pref, "\n")

@@ -42,8 +42,50 @@ cat("median =", med, "\n")
 cat("signs =", paste(s, collapse = " "), "\n")
 cat("n1 =", n1, " n2 =", n2, " R =", r, "\n")
 cat("E[R] =", e_r, " Var[R] =", var_r, " Z =", z, "\n")
-cat("two-sided p-value =", p_two, "\n")
+cat("two-sided p-value (normal approximation) =", p_two, "\n")
 cat("reject H0 at alpha =", alpha, "?", p_two < alpha, "\n\n")
+
+# The study guide decides with a runs table, not with Z.
+# Z needs large n1 and n2. Here both are 6, so use the exact null PMF.
+#   P(R = 2k) = 2 * C(n1-1, k-1) * C(n2-1, k-1) / C(n, n1)
+#   P(R = 2k+1) = [C(n1-1, k) * C(n2-1, k-1) + C(n1-1, k-1) * C(n2-1, k)] / C(n, n1)
+# Equal tails: reject when R <= c_low or R >= c_high, with each tail <= alpha/2.
+# Guide notation: do not reject when FI <= R <= FS.
+
+runs_pmf <- function(n1, n2) {
+  total <- n1 + n2
+  denom <- choose(total, n1)
+  r_values <- 2:total
+  probs <- vapply(r_values, function(r) {
+    if (r %% 2 == 0) {
+      k <- r / 2
+      2 * choose(n1 - 1, k - 1) * choose(n2 - 1, k - 1) / denom
+    } else {
+      k <- (r - 1) / 2
+      (choose(n1 - 1, k) * choose(n2 - 1, k - 1) +
+        choose(n1 - 1, k - 1) * choose(n2 - 1, k)) / denom
+    }
+  }, numeric(1))
+  data.frame(r = r_values, probability = probs)
+}
+
+pmf <- runs_pmf(n1, n2)
+pmf <- pmf[pmf$probability > 0, ]
+cdf <- cumsum(pmf$probability)
+c_low_hits <- pmf$r[cdf <= alpha / 2]
+c_low <- if (length(c_low_hits) == 0) NA_integer_ else max(c_low_hits)
+upper_tail <- rev(cumsum(rev(pmf$probability)))
+c_high_hits <- pmf$r[upper_tail <= alpha / 2]
+c_high <- if (length(c_high_hits) == 0) NA_integer_ else min(c_high_hits)
+fi <- if (is.na(c_low)) min(pmf$r) else c_low + 1
+fs <- if (is.na(c_high)) max(pmf$r) else c_high - 1
+reject_exact <- r < fi || r > fs
+
+cat("Exact runs test, equal tails at alpha =", alpha, "\n")
+cat("reject if R <=", c_low, "or R >=", c_high, "\n")
+cat("guide form: do not reject when", fi, "<= R <=", fs, "\n")
+cat("R =", r, " reject H0?", reject_exact, "\n")
+cat("P(R =", r, ") =", pmf$probability[pmf$r == r], "\n\n")
 
 # --- package versions, if installed ---
 # install.packages("tseries")    # runs.test on a two-level factor
