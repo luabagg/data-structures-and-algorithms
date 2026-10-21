@@ -1,5 +1,4 @@
 # Kolmogorov-Smirnov test
-# Notes: obsidian-statistics-vault → Statistical Inference/Kolmogorov-Smirnov Test
 #
 # Continuous data. Compare cumulative distribution functions (CDFs).
 #

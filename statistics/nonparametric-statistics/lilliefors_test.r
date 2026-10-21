@@ -1,5 +1,4 @@
 # Lilliefors test (normality)
-# Notes: obsidian-statistics-vault → Statistical Inference/Lilliefors Test
 # Package: nortest::lillie.test
 #
 # Continuous data. H0: the sample comes from some Normal(mu, sigma^2).

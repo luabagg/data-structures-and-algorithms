@@ -1,5 +1,4 @@
 # Runs test (randomness / "teste de iterações")
-# Notes: obsidian-statistics-vault → Statistical Inference/Runs Test
 # Common R: tseries::runs.test or randtests::runs.test
 #
 # Sequence data. H0: the order is random (independent of position).

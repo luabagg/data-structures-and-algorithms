@@ -1,5 +1,4 @@
 # Binomial test
-# Notes: obsidian-statistics-vault → Statistical Inference/Binomial Test
 #
 # Binary outcomes (success / failure). Parameter of interest: p = P(success).
 # Under H0: p = p0. X ~ Binomial(n, p0) under H0 (iid Bernoulli trials).

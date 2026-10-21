@@ -1,5 +1,4 @@
 # Chi-squared test
-# Notes: obsidian-statistics-vault → Statistical Inference/Chi-Squared Test
 #
 # Categorical counts. Compare observed frequencies with expected frequencies
 # under a null model.
