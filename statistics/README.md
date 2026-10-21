@@ -19,6 +19,8 @@ nonparametric-statistics/
     mcnemar_test.r
     sign_test.r
     wilcoxon_signed_rank_test.r
+  k-related-samples/
+    friedman_test.r
 experimental-statistics/
   completely_randomized_design.r
   randomized_block_design.r
@@ -61,6 +63,12 @@ Two related samples:
 | Binary category before and after | `nonparametric-statistics/two-related-samples/mcnemar_test.r` |
 | Paired numeric outcome, direction only | `nonparametric-statistics/two-related-samples/sign_test.r` |
 | Paired numeric outcome, direction and size | `nonparametric-statistics/two-related-samples/wilcoxon_signed_rank_test.r` |
+
+k related samples:
+
+| Situation | Script |
+|---|---|
+| k treatments on the same blocks, ordinal or numeric outcome | `nonparametric-statistics/k-related-samples/friedman_test.r` |
 
 ## Experimental statistics
 
@@ -114,6 +122,7 @@ Rscript nonparametric-statistics/two-independent-samples/mann_whitney_test.r
 Rscript nonparametric-statistics/two-related-samples/mcnemar_test.r
 Rscript nonparametric-statistics/two-related-samples/sign_test.r
 Rscript nonparametric-statistics/two-related-samples/wilcoxon_signed_rank_test.r
+Rscript nonparametric-statistics/k-related-samples/friedman_test.r
 Rscript experimental-statistics/completely_randomized_design.r
 Rscript experimental-statistics/randomized_block_design.r
 Rscript experimental-statistics/latin_square_design.r
